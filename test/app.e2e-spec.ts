@@ -49,7 +49,7 @@ describe('Teste de Módulos Usuarios e Auth (e2e)', () => {
 
   })
 
-  it ('02 - Deve autentificar Usuario (login)', async () => {
+  it ('02 - Deve autenticar Usuario (login)', async () => {
     const resposta = await request(app.getHttpServer())
     .post('/auth/logar')
     .send({
@@ -87,20 +87,20 @@ describe('Teste de Módulos Usuarios e Auth (e2e)', () => {
   })
 
   it('05 - Atualizar um Usuario', async () => {
-    return request(app.getHttpAdapter())
+    return request(app.getHttpServer())
     .put('/usuarios/atualizar')
     .set('Authorization', `${token}`)
     .send({
       id: usuarioId,
-      nome:'Sergio',
-      usuario: 'sergio@gmail.com',
-      senha: 'sergio123',
+      nome:'Jorginho',
+      usuario: 'teste@gmail.com',
+      senha: 'teste123',
       foto: ''
     })
     .expect(200)
     .then(
       resposta => {
-        expect("Usuario Atualizado").toEqual(resposta.body.nome)
+        expect("Jorginho").toEqual(resposta.body.nome)
       }
     )
   })
